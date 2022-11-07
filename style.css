@@ -1,0 +1,152 @@
+@charset "utf-8";  /*  */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap'); /* Importando Fonte do Google Fonts */
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif; /* Chamando a fonte que baixei do Google */
+}
+
+:root{ /*Seleciona a raiz do HTML */
+    --card-cor-borda: #746615;
+    --card-cor-primaria:  #f7dd43; /*Para todos os elementos que terão essa cor, chama ela usando var (--card-cor-primaria).*/
+    --card-cor-background: #1d1c1d;
+    --bg: url(./img/bg-yellow.svg);
+}
+
+body.blue{ /*Mudando a cor de alguns elementos caso necessário*/
+    --card-cor-borda: #338af3;
+    --card-cor-primaria:  #338af3;
+    --card-cor-background: #202024;
+    --bg: url(./img/bg-blue.svg);
+}
+
+body.green{
+    --card-cor-borda: #047c3f;
+    --card-cor-primaria:  #047c3f;
+    --card-cor-background: #1a1f1b;
+    --bg: url(./img/bg-green.svg);
+}
+
+ul{
+    list-style: none;
+} 
+
+body{
+    background-color: #121214;
+    background-image: var(--bg);
+    background-repeat: no-repeat;
+    background-position: top center; /*Eixo Y sendo TOP e eixo X sendo CENTER */
+    background-size: cover; /*Cobrir todo o espaço*/ 
+   
+}
+
+#app{
+    width: fit-content; /*Encaixa o conteúdo dentro da caixa, que é a linha vermelha */
+    margin: auto;
+    padding-top: 50px;
+}
+
+header{
+    margin-bottom: 63px; 
+    text-align: center;
+}
+
+#cards{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+}
+
+.card{
+    padding: 32px 23px; /* 32px sendo CIMA e BAIXO - 23px sendo LATEREAIS */ 
+    text-align: center;
+    background: var(--card-cor-background);
+    border-bottom: 2px solid var(--card-cor-primaria) ;
+    border-radius: 6px;
+}
+
+.card h2{
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    padding:8px 16px; /* 8px sendo CIMA e BAIXO - 16px sendo LATEREAIS */ 
+    border:1px solid var(--card-cor-borda) ;
+    border-radius: 6px;
+    width: fit-content;
+    margin-inline: auto;
+    margin-bottom: 53px;
+    color: #f7dd43; /*Manter a cor do texto para não mudar*/
+}
+
+.card h2 span{
+    color: #E1E1E6;
+    font-size: 14px;
+    text-transform: uppercase; /* Transforma o texto em caixa alta, tudo MAIÚSCULA */
+}
+
+.card ul{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 270px;
+}
+
+.card ul li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card ul li + li{ /*Só funciona se existir 2 "li" no html. O sinal de "+" significa que o elemento "li" tem que ter anterior a ele outro "li"  */
+    padding-top: 24px;
+    border-top: 1px solid #323238;
+}
+
+.card ul li strong{
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 125%;
+    
+    color: #E1E1E6;
+}
+
+.card h2:hover,
+.card ul li strong:hover,
+.card ul li img:hover {
+    transform: scale(1.1);
+}
+
+.card h2:hover,
+.card ul li strong:hover,
+.card ul li img:hover{
+    transition: transform 0.3s;
+}
+
+.card {
+    opacity: 0;
+    animation: appear .2s forwards; /* forwards= pega a animação que está em 100%*/
+}
+
+@keyframes appear{ 
+    0%{
+        transform: translateY(-50px); /*O card vai iniciar na posição -50px e volta a posição padrão*/
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@media (min-width: 700px){ /*A parti da largura de 700px, vai aplicar os efeitos*/
+    #cards{
+        max-width: 670px; /*Largura máxima da caixa onde fica os cards*/
+        flex-direction: row; /*Cards ficaram em linhas */
+        flex-wrap: wrap; /* Se transbordar, joga o próximo para a linha debaixo*/
+    }
+}
