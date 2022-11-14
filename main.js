@@ -1,9 +1,9 @@
 function createGame(player1, hour, player2){ /*Criando função para deixar editavel os times e a hora do jogo */
     return `
     <li>
-        <img src="./img/icon-${player1}.svg" alt="Bandeira do ${player1}">
+        <img src="./img/icon=${player1}.svg" alt="Bandeira do ${player1}">
         <strong>${hour}</strong>
-        <img src="./img/icon-${player2}.svg" alt="Bandeira da ${player2}">
+        <img src="./img/icon=${player2}.svg" alt="Bandeira da ${player2}">
     </li>
     `
 }
